@@ -1,0 +1,6 @@
+*.zip
+*.crx
+*.pem
+node_modules/
+__pycache__/
+test/icon_preview.png

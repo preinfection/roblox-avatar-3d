@@ -1,0 +1,124 @@
+:root {
+  --bg: #ffffff;
+  --fg: #111214;
+  --muted: #6b6f76;
+  --field: #f2f3f5;
+  --line: #e3e5e8;
+  --btn: #111214;
+  --btn-fg: #ffffff;
+  --fill: #3a3d42;
+  --err: #c4352b;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181a;
+    --fg: #f2f3f5;
+    --muted: #8d9198;
+    --field: #232427;
+    --line: #2e3034;
+    --btn: #f2f3f5;
+    --btn-fg: #111214;
+    --fill: #c9ccd1;
+    --err: #ff7a6e;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; }
+body {
+  width: 280px;
+  padding: 14px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+.view { display: none; gap: 10px; }
+.view.on { display: grid; animation: enter .26s cubic-bezier(.2,.7,.2,1); }
+.view.back.on { animation-name: enter-back; }
+@keyframes enter { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+@keyframes enter-back { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+
+.row { display: flex; align-items: center; gap: 8px; }
+.sq {
+  width: 38px; height: 38px; flex: none;
+  display: grid; place-items: center;
+  border: 0; border-radius: var(--r);
+  background: var(--field); color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease, transform .12s ease;
+}
+.sq:hover { color: var(--fg); }
+.sq:active { transform: scale(.94); }
+.sq:disabled { opacity: .35; cursor: default; }
+.sq:disabled:active { transform: none; }
+.row .wide { flex: 1; min-width: 0; }
+h1 { font-size: 13px; font-weight: 600; }
+.row h1 { flex: 1; }
+.files { list-style: none; padding: 0; display: grid; gap: 6px; }
+.files li { display: flex; justify-content: space-between; gap: 10px; }
+.files span, .hint { color: var(--muted); }
+.files span { text-align: right; }
+code { font: 12px/1.35 ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--fg); }
+.hint { font-size: 12px; }
+
+svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+#search {
+  flex: 1; min-width: 0;
+  display: flex; align-items: center; gap: 8px;
+  height: 38px; padding: 0 12px;
+  background: var(--field); border-radius: var(--r);
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: border-color .2s ease;
+}
+#search:focus-within { border-color: var(--line); }
+#q {
+  flex: 1; min-width: 0; height: 100%;
+  background: none; border: 0; outline: 0;
+  color: var(--fg); font: inherit;
+}
+#q::placeholder { color: var(--muted); }
+
+#card {
+  display: flex; align-items: center; gap: 12px;
+  height: 0; opacity: 0; overflow: hidden;
+  transform: translateY(-4px);
+  transition: height .28s cubic-bezier(.2,.7,.2,1), opacity .22s ease, transform .28s cubic-bezier(.2,.7,.2,1);
+}
+#card.on { height: 56px; opacity: 1; transform: none; }
+#pic {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--field); object-fit: cover; flex: none;
+}
+.who { display: grid; min-width: 0; }
+#dn { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#un { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.wide {
+  position: relative; overflow: hidden;
+  height: 38px; width: 100%;
+  border: 0; border-radius: var(--r);
+  background: var(--btn); color: var(--btn-fg);
+  font: inherit; font-weight: 600; cursor: pointer;
+  transition: opacity .2s ease, transform .12s ease;
+}
+#go:disabled { opacity: .35; cursor: default; }
+#go:not(:disabled):active { transform: scale(.985); }
+#go .fill {
+  position: absolute; inset: 0;
+  background: var(--fill);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+#go .label { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; }
+#go.busy { cursor: progress; opacity: 1; }
+
+#msg { min-height: 0; color: var(--muted); font-size: 12px; text-align: center; }
+#msg:empty { display: none; }
+#msg.err { color: var(--err); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

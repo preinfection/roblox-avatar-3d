@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Avatar 3D</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main id="home" class="view on">
+    <div class="row">
+      <form id="search" autocomplete="off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <input id="q" placeholder="Username" spellcheck="false" aria-label="Roblox username">
+      </form>
+      <button id="help" class="sq" title="Help" aria-label="Help">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.8 1c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17.2h.01"/></svg>
+      </button>
+    </div>
+
+    <section id="card" aria-live="polite">
+      <img id="pic" alt="">
+      <div class="who">
+        <b id="dn"></b>
+        <span id="un"></span>
+      </div>
+    </section>
+
+    <div class="row">
+      <button id="go" class="wide" disabled>
+        <span class="fill"></span>
+        <span class="label">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+          <span id="label">Download 3D</span>
+        </span>
+      </button>
+    </div>
+
+    <p id="msg" role="status"></p>
+  </main>
+
+  <section id="helpview" class="view" aria-label="Help">
+    <div class="row">
+      <button id="back" class="sq" title="Back" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg>
+      </button>
+      <h1>What you get</h1>
+    </div>
+
+    <ul class="files">
+      <li><code>avatar_spin.gif</code><span>360&deg; spin, see-through</span></li>
+      <li><code>avatar_front.png</code><span>front picture</span></li>
+      <li><code>avatar.obj</code><span>the 3D model, open this</span></li>
+      <li><code>avatar.mtl</code><span>which picture goes where</span></li>
+      <li><code>textures/</code><span>body, accessories, glow</span></li>
+      <li><code>camera.json</code><span>Roblox&rsquo;s thumbnail angle</span></li>
+      <li><code>render_gif.py</code><span>bigger GIF (Python)</span></li>
+      <li><code>README.txt</code><span>all of this, offline</span></li>
+    </ul>
+
+    <p class="hint">Windows: open <code>avatar.obj</code> with 3D Viewer. Blender: File &rsaquo; Import &rsaquo; Wavefront. Keep the files together.</p>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

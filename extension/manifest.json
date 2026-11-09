@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Avatar 3D",
+  "short_name": "Avatar 3D",
+  "version": "0.2.0",
+  "description": "Download any Roblox avatar as a 3D model (OBJ + MTL + textures) in one zip.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Avatar 3D",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "permissions": ["downloads", "scripting"],
+  "host_permissions": ["https://*.roblox.com/*", "https://*.rbxcdn.com/*"]
+}
